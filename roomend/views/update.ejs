@@ -58,16 +58,18 @@
         <table class="table col-8">
             <thead>
                 <tr>
-                  <th></th>
-                  <th scope="col">商品名稱</th>
-                  <th scope="col">價錢</th>
-                  <th scope="col">商品圖片</th>
-                  <th></th>
+                    <th></th>
+                    <th scope="col">請選取</th>
+                    <th scope="col">商品名稱</th>
+                    <th scope="col">價錢</th>
+                    <th scope="col">商品圖片</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
             <% for(var i = 0; i < result.length; i++) { %>
                 <tr>
+                    <th></th>
                     <td style="vertical-align:middle;"><input type="radio" name='num' value=<%= i %> </td>
                     <td style="vertical-align:middle;"><input type="text" name="productname" value=<%= result[i].productname %> </td>
                     <td style="vertical-align:middle;"><input type="text" name="money_id" value=<%= result[i].moneyId %> </td>
