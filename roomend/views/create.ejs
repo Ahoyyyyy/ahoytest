@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+    <head>
+        <title>上架商品</title>
+        <meta charset="utf-8">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <script src="https://store.ims.ice.cyut.edu.tw/javascript/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://store.ims.ice.cyut.edu.tw/css/bootstrap.min.css">
+        <script src="http://www.xiaoshu168.com/js/public/jquery.min.js"></script>
+        <link rel="icon" href="https://www.convertico.com/images/1606071567.7556/_previmg.png" type="image/x-icon" / >
+    </head>
+    <style>
+        h1{
+            font-size: 50px;
+            font-weight: bold;
+        }
+        #user {
+            float: right ;
+            margin: auto;
+            width:auto;
+            height: 0px;
+            font-size: 30px;
+        } 
+        #shop {
+            float: left ;
+            margin: auto;
+            width:auto;
+            height:0px;    
+        }
+        #shop a button{
+            float: left ;
+            margin: auto;
+            width:auto;
+            height: 0px;
+            font-size: 30px;
+        }
+        h2{
+            height:30px;
+        }
+        body {
+            background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/2019CYUT_seal.jpg/1200px-2019CYUT_seal.jpg');
+            background-repeat: no-repeat;
+            background-position: 30px 60px;           
+            background-size: 10%;           
+      }
+    </style> 
+        <div id="user">
+            用戶名：<label for="num"><%= Roomname %></label>  
+            <input hidden type="text" name="dataname" value='<%= Roomname %>' disabled>
+        </div>
+        <div id="shop" align=center>
+            <a align=center><button type="button" class="btn btn-link"onclick="location.href='/com/shop'">商品列表</button></a>
+        </div>
+        <h1 align=center>上架商品</h1>
+        <h2></h2>
+   
+    <form method="post">
+        <div align=center>
+            商品：<input type="text" name="name">
+            價錢：<input type="text" name="money_id">
+            <button type="submit">新增</button></br></br>
+            <input value="sdgsdg" id="demo_input" type="file">
+            <textarea id="result" name="result" type="text" hidden></textarea>
+        </br>
+            <p id="img_area"></p>
+        </div>
+    </form>
+
+<% include footer %>
+<body>
+<script>
+    window.onload = function() {
+        var input = document.getElementById("demo_input");
+        var result = document.getElementById("result");
+        var img_area = document.getElementById("img_area");
+        if (typeof(FileReader) === 'undefined'){
+            result.innerHTML = "ERROR！";
+            input.setAttribute('disabled','disabled');
+        } else{
+            input.addEventListener('change', readFile, false);
+        }
+    }
+    function readFile() {
+        var FileSize = document.getElementById("demo_input").files[0].size / 1024 / 1024; // in MB
+        if (FileSize > 1) {
+           alert('上傳檔案大小不得超過 1 MB！');
+           return false;
+        } 
+        var file = document.getElementById("demo_input").files[0];
+        console.log(file);
+        //这里我们判断下类型如果不是图片就返回 去掉就可以上传任意文件
+        if (!/image\/\w+/.test(file.type)){
+            alert("確認是否為圖像類型");
+            return false;
+        }
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function(e) {
+            result.innerHTML = this.result;
+            img_area.innerHTML = '<div class="sitetip">圖片</div><img src="' + this.result + '" alt=""/>';
+            console.log(this.result);
+        }
+    }
+</script>
+</body>
+</html>
