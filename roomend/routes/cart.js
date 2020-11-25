@@ -11,9 +11,10 @@ router.get('/cart/:id', (req, res, next) => {
     let response = res
     let roominfo = listbuy[req.user.username];
     var sellername = roominfo.seller
+    var buyername =roominfo.buyer
     comModel.find({'sellername':sellername}, (err, result, res) => {
         if(err) return console.log(err)
-        response.render('cart', { result,sellername:roominfo.seller})
+        response.render('cart', { result,sellername:roominfo.seller,buyername:roominfo.buyer})
     })
 })
 //添加商品到購物車
@@ -23,7 +24,7 @@ router.post('/cart/:id', (req, res, next) => {
    let listbuy = roomlist.buyList();
    let audience = req.user.username;
    let sellerroom = listbuy[req.params.id]
-   listbuy[audience] = {seller: req.params.id};
+   listbuy[audience] = {seller: req.params.id,buyer:req.user.username};
     console.log(+req.params.id)
     let num = req.body.num,
         condiction = {_id: req.body._id[num]},

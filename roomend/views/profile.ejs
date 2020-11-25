@@ -14,7 +14,7 @@
     <script src="https://store.ims.ice.cyut.edu.tw/javascript/videojs-dash.min.js"></script>
     <script src="https://store.ims.ice.cyut.edu.tw/javascript/bootstrap-filestyle.min.js"></script>
     <link rel="stylesheet" href="https://store.ims.ice.cyut.edu.tw/css/video-js-cdn.min.css">
-    <link rel="icon" href="https://www.convertico.com/images/1606071609.3064/_previmg.png" type="image/x-icon" / >
+    <link rel="icon" href="http://tw.faviconico.org/ico-converted/20201123/favicon-20201123030143885.ico" type="image/x-icon">
   <style>
     .head{
       font-weight: bold;
@@ -26,6 +26,12 @@
       font-size: 50px;
       font-weight: bold;
     }
+    h3{
+      height:180px;
+    }
+    h4{
+      height: 40px;
+    }
     input{
       font-size:60px;
       width: 100px;
@@ -36,10 +42,11 @@
       text-decoration: none; 
     }
     body {
-            background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/2019CYUT_seal.jpg/1200px-2019CYUT_seal.jpg');
+            background-image:url('https://lh3.googleusercontent.com/-T-RKQeLK-T4/X7wUBTE8afI/AAAAAAAADf0/LFyOjhGX7JE-9x2-CML-b54CsK8OvfGogCLcBGAsYHQ/%25E5%259C%2596%25E7%2589%25871.png');
             background-repeat: no-repeat;
-            background-position: 30px 60px;           
-            background-size: 10%;           
+            background-attachment: fixed;
+            background-position: center;
+            background-size: 43%;           
       }
   </style>
 </head>
@@ -51,17 +58,19 @@
       <div class="col"></div>
       <div  class="my-2 my-lg-0 ">
         <p style="font-size: 25px;">用戶名: <%= user %> 
-        <a href="/users/logout">登出</a></p>
+        <a  class="btn btn-primary" href="/users/logout">登出</a></p>
         
       </div>
     </nav>
   </div>
-  </br>
-  <h2 align=center>選擇買賣家 </h2>
+  <h3></h3>
+  
+  <h2 align=center valign=center>選擇買賣家 </h2>
+  <h4></h4>
   <div  align="center">
     <!--p style="font-size: 30px;">金鑰: <%= roomkey %></p></br-->
-    <input type="button" style="width: 170px" onclick="javascript:location.href='/users/Buyer'"value="買家"></input> 
-    <input type="button" style="width: 170px" onclick="javascript:location.href='/users/seller'"value="賣家"></input>
+    <input type="button"  style="width: 170px" onclick="javascript:location.href='/users/Buyer'"value="買家"></input> &emsp;&emsp;
+    <input type="button"  style="width: 170px" onclick="javascript:location.href='/users/seller'"value="賣家"></input>
   </div>
 </body>
 

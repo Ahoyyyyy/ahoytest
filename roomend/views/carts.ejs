@@ -26,31 +26,33 @@
 			width:auto;
 			height:0px;    
 		}
-		#shop a button{
+		/*#shop a button{
 			float: right ;
 			margin: auto;
 			width:auto;
 			height: 0px;
 			font-size: 30px;
 			padding:0px;
-		}
+			top:100%;
+		}*/
 		#end{
 			font-size: 30px;
 	
 		}
 		body {
-            background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/2019CYUT_seal.jpg/1200px-2019CYUT_seal.jpg');
+            background-image:url('https://lh3.googleusercontent.com/-T-RKQeLK-T4/X7wUBTE8afI/AAAAAAAADf0/LFyOjhGX7JE-9x2-CML-b54CsK8OvfGogCLcBGAsYHQ/%25E5%259C%2596%25E7%2589%25871.png');
             background-repeat: no-repeat;
-            background-position: 30px 60px;           
-            background-size: 10%;           
+            background-attachment: fixed;
+            background-position: center;
+            background-size: 45%;                      
       }
 	</style>
 	<div id="shop" align=center>
-		<p align=center>賣家：<label for="num"><%= sellername %></label>  
+		<p align=center>用戶名：<%= buyername%>直播主：<label for="num"><%= sellername %></label>  
 		&nbsp;
         <input hidden type="text" name="dataname" value='<%= sellername %>' disabled>
 		<input type="text" name='sellername' value=<%= sellername %> readonly="readonly" hidden>
-		<a align=center><button type="button" class="btn btn-link" onclick="location.href='/cart/cart/<%= sellername %>'">商品列表</button></a>
+		<a align=center><button type="button" class="btn btn-primary" onclick="location.href='/cart/cart/<%= sellername %>'">商品列表</button></a>&nbsp;
 		</p>
 	</div>
 	<script>
@@ -151,26 +153,6 @@
 					
 			</script>
 			<button type="button" id="fdt" class="btn btn-primary" onclick="window.open('../finish')"  target="_blank " >結單</button>
-			<script>
-				var timetime = getNowTime();
-				$("#fdt").click(function(){
-				  $.ajax({
-					url: '../finishsell',
-					type: 'POST',
-					dataType: 'json',
-					data: {
-						buyername: '<%= buyername %>',
-						NowTime: timetime
-					},
-					success: function(data) {
-					  	 alert("data")
-					},
-					error: function(XMLHttpRequest, textStatus, errorThrown) {
-					  alert(JSON.parse(XMLHttpRequest.responseText).msg);
-					}
-				  })
-				})
-			</script>
 	</div>	
 </br>
 <% include footer %>
