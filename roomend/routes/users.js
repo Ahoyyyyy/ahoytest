@@ -35,7 +35,10 @@ router.post('/signup', function(req, res, next) {
   var username = req.body.username
   var password = req.body.password
   var roomkey = Math.random().toString(36).substr(2,16);
-console.log(username);
+  var Telephone = req.body.Telephone
+  var Email = req.body.Email
+  var Address = req.body.Address
+  console.log(username);
   // Validation
   req.checkBody('username', 'Username is required').notEmpty()
   req.checkBody('password', 'Password is required').notEmpty()
@@ -48,7 +51,10 @@ console.log(username);
   var newUser = new User({
     username: username,
     password: password,
-    roomkey: roomkey
+    roomkey: roomkey,
+    Telephone: Telephone,
+    Email: Email,
+    Address: Address
   })
   User.createUser(newUser, function(err, user){
     if(err) throw err;
